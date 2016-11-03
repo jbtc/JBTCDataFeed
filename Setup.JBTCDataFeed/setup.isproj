@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Project ToolsVersion="3.5" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup>
+		<!-- Select a Product Configuration -->
+		<InstallShieldProductConfiguration>Express</InstallShieldProductConfiguration>
+		<!-- Select a Visual Studio Configuration / InstallShield Release -->
+		<Configuration>Debug</Configuration>
+		<InstallShieldRelease>$(Configuration)</InstallShieldRelease>
+	</PropertyGroup>
+	<ItemGroup>
+		<!-- The InstallShieldProject item selects the project to build -->
+		<InstallShieldProject Include="$(MSBuildProjectDirectory)\$(MSBuildProjectName).isl"/>
+		<!-- The InstallShieldReleaseFlags sets Release Flags -->
+		<!--<InstallShieldReleaseFlags Include=""/>-->
+		<!-- The InstallShieldMergeModulePath specifies what directories are
+		searched for Merge Modules -->
+		<!--<InstallShieldMergeModulePath Include=""/>-->
+	</ItemGroup>
+	<ItemGroup>
+		<!-- The ProjectReference items refer to any Visual Studio solutions you want to automatically probe for Project Output Groups.  -->
+	</ItemGroup>
+	<ItemGroup>
+		<!-- The TaggedOutputs items allow you to explicitly add extra files to output groups. Each item must include both Name and OutputGroup, as well as TargetPath metadata values. -->
+		<!--<TaggedOutputs Include="C:\My Test Exe.exe">
+			<Name>My Test Project</Name>
+			<OutputGroup>Primary output</OutputGroup>
+			<TargetPath>My Test Exe.exe</TargetPath>
+		</TaggedOutputs> -->
+	</ItemGroup>
+	<Import Project="$(MSBuildExtensionsPath32)\InstallShield\2015Limited\InstallShield.targets"/>
+	<ItemGroup>
+		<ProjectReference Include="..\JBTCDataFeed\JBTCDataFeed.csproj">
+			<Name>JBTCDataFeed</Name>
+			<Project>{F6A65E89-374D-4D7B-9B1D-978A4A6EA58C}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\JBTCDataFeedUserConfiguraton\JBTCDataFeedUserConfiguraton.csproj">
+			<Name>JBTCDataFeedUserConfiguraton</Name>
+			<Project>{2372B336-07D9-490F-827C-79F1FB739FE9}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\JBTCEmailFeed\JBTCEmailFeed.csproj">
+			<Name>JBTCEmailFeed</Name>
+			<Project>{EFB6EF5F-0DCB-47CA-B101-D229BB64B821}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\JBTCSMSFeed\JBTCSMSFeed.csproj">
+			<Name>JBTCSMSFeed</Name>
+			<Project>{E9C8AAAD-A227-468E-B8F3-44A7501ED109}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\JBTData\JBTData.csproj">
+			<Name>JBTData</Name>
+			<Project>{3DCEAF3B-779B-4D2F-B8D1-7FB8D59A52F2}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\Utilities\Utilities.csproj">
+			<Name>Utilities</Name>
+			<Project>{9FDD8B87-AEBD-411C-8715-601430DE4B63}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\jbt_opc\jbt_opc.csproj">
+			<Name>jbt_opc</Name>
+			<Project>{60122739-3028-405B-A3DC-70FBEF5E1C8C}</Project>
+		</ProjectReference>
+	</ItemGroup>
+</Project>

@@ -1,0 +1,118 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.ServiceModel.Activation;
+using System.ServiceModel.Channels;
+using System.ServiceModel.Web;
+using System.Text;
+using System.Web.Script.Serialization;
+
+namespace JBTCDataFeedWebUtility
+{
+    [ServiceContract(Namespace = "")]
+    [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
+    public class JBTCDataFeedWebUtilityService
+    {
+        // response values for client
+        private  enum WebUtilityReponseCode
+        {
+            OK = 0,
+            InvalidJson = 100,          // JSON related Group
+            InvalidKey = 200,           // Authentication Issue Group
+            DuplicateEntryDB = 300,     // DataBase Issue Group
+            GeneralFailure = 999        // Kitchen Sink
+        }
+
+        private Dictionary<string, SessionKey> UserKeysByIp = new Dictionary<string, SessionKey>();
+
+
+        // To use HTTP GET, add [WebGet] attribute. (Default ResponseFormat is WebMessageFormat.Json)
+        // To create an operation that returns XML,
+        //     add [WebGet(ResponseFormat=WebMessageFormat.Xml)],
+        //     and include the following line in the operation body:
+        //         WebOperationContext.Current.OutgoingResponse.ContentType = "text/xml";
+        [OperationContract][WebGet]
+        public void DoWork()
+        {
+            // Add your operation implementation here
+            return;
+        }
+
+
+        /// <summary>
+        /// Does the heartbeat processing.
+        /// </summary>
+        /// <returns></returns>
+        [OperationContract]
+        [WebGet]
+        public string DoPing()
+        {
+            /*
+             * you call it this way
+             * http://localhost/JBTCDataFeedWebUtility/JBTCDataFeedWebUtilityService.svc/DoPing
+             */
+            OperationContext context = OperationContext.Current;
+            MessageProperties prop = context.IncomingMessageProperties;
+            RemoteEndpointMessageProperty endpoint = prop[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty;
+            string ip = endpoint.Address;
+            return "OK.. you are "+ip;
+        }
+
+        /// <summary>
+        /// Does the authenticate.
+        /// </summary>
+        /// <param name="username">The username.</param>
+        /// <param name="password">The password.</param>
+        /// <returns></returns>
+        [OperationContract]
+        [WebGet]
+        public string DoAuthenticate()
+        {
+            /*
+             * you call it this way
+             * http://localhost/JBTCDataFeedWebUtility/JBTCDataFeedWebUtilityService.svc/DoAuthenticate?user=123&pwd=234
+             */
+            NameValueCollection queryStringCol = 
+                WebOperationContext.Current.IncomingRequest.UriTemplateMatch.QueryParameters;
+
+            string parameters = string.Empty;
+            if (queryStringCol != null && queryStringCol.Count > 0)
+            {                
+                for (int i = 0; i < queryStringCol.Count; i++)
+                {
+                    parameters += queryStringCol[i] + "###";
+                }
+            }
+
+            OperationContext context = OperationContext.Current;
+            MessageProperties prop = context.IncomingMessageProperties;
+            RemoteEndpointMessageProperty endpoint = prop[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty;
+            string ip = endpoint.Address;
+            
+            SessionKey s = new SessionKey();
+            s.TimeStamp = DateTime.Now.ToString();
+            s.Key = Guid.NewGuid().ToString() ;
+            if (UserKeysByIp.ContainsKey(ip))
+            {
+                UserKeysByIp[ip] = s;
+            }
+            else
+            {
+                UserKeysByIp.Add(ip, s);
+            }
+            if (queryStringCol != null && queryStringCol.Count > 0)
+            {
+                return ip + " entered " + parameters; // This will returned as an XML.
+            }
+            else
+            {
+                string res = new JavaScriptSerializer().Serialize(s);
+                return res;
+
+            }
+        }
+    }
+}

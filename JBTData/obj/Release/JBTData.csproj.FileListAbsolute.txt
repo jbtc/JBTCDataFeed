@@ -1,0 +1,5 @@
+C:\iOPS\serialDataCollector\SerialDataCollector\JBTData\bin\Release\JBTData.dll
+C:\iOPS\serialDataCollector\SerialDataCollector\JBTData\bin\Release\JBTData.pdb
+C:\iOPS\serialDataCollector\SerialDataCollector\JBTData\obj\Release\JBTData.csprojResolveAssemblyReference.cache
+C:\iOPS\serialDataCollector\SerialDataCollector\JBTData\obj\Release\JBTData.dll
+C:\iOPS\serialDataCollector\SerialDataCollector\JBTData\obj\Release\JBTData.pdb
