@@ -20,11 +20,13 @@ namespace JBTCDataFeedWebUtility
         private  enum   WebUtilityReponseCode : int
         {
             OK = 0,
-            InvalidJson = 100,          // JSON related Group
+            InvalidJson = 100,                  // Response JSON related Group  
             PleaseRequestKey = 101,
-            InvalidKey = 200,           // Authentication Issue Group
-            DuplicateEntryDB = 300,     // DataBase Issue Group
-            GeneralFailure = 999        // Kitchen Sink
+            InvalidKey = 200,                   // Authentication Issue Group
+            DuplicateEntryDB = 300,             // DataBase Issue Group
+            RequestIsMissingParameter = 400,    // Request Parameter Group 
+            GeneralFailure = 999,               // Kitchen Sink
+            
         }
 
         private Dictionary<string, SessionKey> UserKeysByIp = new Dictionary<string, SessionKey>();
@@ -58,7 +60,7 @@ namespace JBTCDataFeedWebUtility
             {
                 for (int i = 0; i < queryStringCol.Count; i++)
                 {
-                    pars.Add(queryStringCol[i], queryStringCol[i]);
+                    pars.Add(queryStringCol.AllKeys[i], queryStringCol[i]);
                     
                 }
             }
@@ -70,8 +72,37 @@ namespace JBTCDataFeedWebUtility
             ResponseData r = new ResponseData();
             if (UserKeysByIp.ContainsKey(ip))
             {
-                r.ResponseKey = 2;
-                r.JSON = "aha";
+                /*
+                 * structure of request parameters
+                 * RequestType = name of the request - index 0
+                 * RequestData = JSON input data = index 1
+                 */
+                if (pars.ContainsKey("RequestType"))
+                {
+                    if (pars.ContainsKey("RequestData"))
+                    {
+                        switch (pars["RequestType"])
+                        {
+                            case "1":
+                                RequestClass1 rs1 = new RequestClass1();
+                                break;
+                            default:
+                                break;
+                        }
+                        string responsedata = "aha";
+                        r.ResponseKey = (int)WebUtilityReponseCode.OK;
+                        r.JSON = responsedata;
+                    }
+                    else
+                    {
+                        r.ResponseKey = (int)WebUtilityReponseCode.RequestIsMissingParameter;
+                    }
+                }
+                else
+                {
+                    r.ResponseKey = (int)WebUtilityReponseCode.RequestIsMissingParameter;
+
+                }
             }
             else
             {

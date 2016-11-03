@@ -84,6 +84,7 @@ namespace JBTCDataFeedWebUtility
                         switch (pars["RequestType"])
                         {
                             case "1":
+                                RequestClass1 rs1 = new RequestClass1();
                                 break;
                             default:
                                 break;
