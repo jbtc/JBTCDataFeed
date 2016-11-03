@@ -1,0 +1,10 @@
+C:\iOPS\serialDataCollector\SerialDataCollector\jbt_opc\bin\Release\jbt_opc.dll
+C:\iOPS\serialDataCollector\SerialDataCollector\jbt_opc\bin\Release\jbt_opc.pdb
+C:\iOPS\serialDataCollector\SerialDataCollector\jbt_opc\bin\Release\OPCControls.dll
+C:\iOPS\serialDataCollector\SerialDataCollector\jbt_opc\bin\Release\OPCSystems.dll
+C:\iOPS\serialDataCollector\SerialDataCollector\jbt_opc\bin\Release\OPCSystemsDataConnector.dll
+C:\iOPS\serialDataCollector\SerialDataCollector\jbt_opc\bin\Release\OPCSystemsInterface.dll
+C:\iOPS\serialDataCollector\SerialDataCollector\jbt_opc\bin\Release\OPCSystemsBrowseComputers.dll
+C:\iOPS\serialDataCollector\SerialDataCollector\jbt_opc\obj\Release\jbt_opc.csprojResolveAssemblyReference.cache
+C:\iOPS\serialDataCollector\SerialDataCollector\jbt_opc\obj\Release\jbt_opc.dll
+C:\iOPS\serialDataCollector\SerialDataCollector\jbt_opc\obj\Release\jbt_opc.pdb
