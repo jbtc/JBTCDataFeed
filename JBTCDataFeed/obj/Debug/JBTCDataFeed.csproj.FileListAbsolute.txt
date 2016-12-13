@@ -34,3 +34,12 @@ S:\jbt\JBTCFeed\JBTCDataFeed\JBTCDataFeed\obj\Debug\JBTCDataFeed.ProjectInstalle
 S:\jbt\JBTCFeed\JBTCDataFeed\JBTCDataFeed\obj\Debug\JBTCDataFeed.csproj.GenerateResource.Cache
 S:\jbt\JBTCFeed\JBTCDataFeed\JBTCDataFeed\obj\Debug\JBTCDataFeed.exe
 S:\jbt\JBTCFeed\JBTCDataFeed\JBTCDataFeed\obj\Debug\JBTCDataFeed.pdb
+C:\jbt\Git\JBTCDataFeed\Output_Debug\JBTCDataFeed.exe.config
+C:\jbt\Git\JBTCDataFeed\Output_Debug\JBTCDataFeed.exe
+C:\jbt\Git\JBTCDataFeed\Output_Debug\JBTCDataFeed.pdb
+C:\jbt\Git\JBTCDataFeed\JBTCDataFeed\obj\Debug\JBTCDataFeed.csprojResolveAssemblyReference.cache
+C:\jbt\Git\JBTCDataFeed\JBTCDataFeed\obj\Debug\JBTCDataPort.JBTCDataFeedService.resources
+C:\jbt\Git\JBTCDataFeed\JBTCDataFeed\obj\Debug\JBTCDataFeed.ProjectInstaller.resources
+C:\jbt\Git\JBTCDataFeed\JBTCDataFeed\obj\Debug\JBTCDataFeed.csproj.GenerateResource.Cache
+C:\jbt\Git\JBTCDataFeed\JBTCDataFeed\obj\Debug\JBTCDataFeed.exe
+C:\jbt\Git\JBTCDataFeed\JBTCDataFeed\obj\Debug\JBTCDataFeed.pdb

@@ -28,3 +28,8 @@ S:\jbt\JBTCFeed\JBTCDataFeed\Output_Debug\JBTData.pdb
 S:\jbt\JBTCFeed\JBTCDataFeed\JBTData\obj\Debug\JBTData.csprojResolveAssemblyReference.cache
 S:\jbt\JBTCFeed\JBTCDataFeed\JBTData\obj\Debug\JBTData.dll
 S:\jbt\JBTCFeed\JBTCDataFeed\JBTData\obj\Debug\JBTData.pdb
+C:\jbt\Git\JBTCDataFeed\Output_Debug\JBTData.dll
+C:\jbt\Git\JBTCDataFeed\Output_Debug\JBTData.pdb
+C:\jbt\Git\JBTCDataFeed\JBTData\obj\Debug\JBTData.csprojResolveAssemblyReference.cache
+C:\jbt\Git\JBTCDataFeed\JBTData\obj\Debug\JBTData.dll
+C:\jbt\Git\JBTCDataFeed\JBTData\obj\Debug\JBTData.pdb

@@ -1,0 +1,8 @@
+C:\jbt\Git\JBTCDataFeed\JSON.Net\Source\Src\Newtonsoft.Json\bin\Debug\Net40\Newtonsoft.Json.xml
+C:\jbt\Git\JBTCDataFeed\JSON.Net\Source\Src\Newtonsoft.Json\bin\Debug\Net40\Newtonsoft.Json.dll
+C:\jbt\Git\JBTCDataFeed\JSON.Net\Source\Src\Newtonsoft.Json\bin\Debug\Net40\Newtonsoft.Json.pdb
+C:\jbt\Git\JBTCDataFeed\JSON.Net\Source\Src\Newtonsoft.Json\bin\Debug\Net40\Newtonsoft.Json.dll.CodeAnalysisLog.xml
+C:\jbt\Git\JBTCDataFeed\JSON.Net\Source\Src\Newtonsoft.Json\bin\Debug\Net40\Newtonsoft.Json.dll.lastcodeanalysissucceeded
+C:\jbt\Git\JBTCDataFeed\JSON.Net\Source\Src\Newtonsoft.Json\obj\Debug\Net40\Newtonsoft.Json.Net40.csprojResolveAssemblyReference.cache
+C:\jbt\Git\JBTCDataFeed\JSON.Net\Source\Src\Newtonsoft.Json\obj\Debug\Net40\Newtonsoft.Json.dll
+C:\jbt\Git\JBTCDataFeed\JSON.Net\Source\Src\Newtonsoft.Json\obj\Debug\Net40\Newtonsoft.Json.pdb

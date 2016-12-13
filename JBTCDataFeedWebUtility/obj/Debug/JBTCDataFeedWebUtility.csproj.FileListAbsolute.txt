@@ -64,3 +64,6 @@ C:\jbt\Git\JBTCDataFeed\JBTCDataFeedWebUtility\bin\JBTCDataFeedWebUtility.dll
 C:\jbt\Git\JBTCDataFeed\JBTCDataFeedWebUtility\bin\JBTCDataFeedWebUtility.pdb
 C:\jbt\Git\JBTCDataFeed\JBTCDataFeedWebUtility\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\jbt\Git\JBTCDataFeed\JBTCDataFeedWebUtility\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\jbt\Git\JBTCDataFeed\JBTCDataFeedWebUtility\bin\Newtonsoft.Json.dll
+C:\jbt\Git\JBTCDataFeed\JBTCDataFeedWebUtility\bin\Newtonsoft.Json.pdb
+C:\jbt\Git\JBTCDataFeed\JBTCDataFeedWebUtility\bin\Newtonsoft.Json.xml

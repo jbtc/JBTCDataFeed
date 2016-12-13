@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
@@ -25,8 +26,15 @@ namespace JBTCDataFeedWebUtility
             InvalidKey = 200,                   // Authentication Issue Group
             DuplicateEntryDB = 300,             // DataBase Issue Group
             RequestIsMissingParameter = 400,    // Request Parameter Group 
+            InvalidRequestType = 401,           // could not parse request type
             GeneralFailure = 999,               // Kitchen Sink
 
+        }
+
+        private enum ReqyestTypeCode : int
+        {
+            SiteSpecificDeviceData = 1,
+            Test = 9999
         }
 
         private static Dictionary<string, SessionKey> UserKeysByIp = new Dictionary<string, SessionKey>();
@@ -52,6 +60,8 @@ namespace JBTCDataFeedWebUtility
              * you call it this way
              * http://localhost/JBTCDataFeedWebUtility/JBTCDataFeedWebUtilityService.svc/DoWork?user=123&pwd=234
              http://localhost:49501/JBTCDataFeedWebUtilityService.svc/DoWork?RequestType=1&RequestData=234
+
+            http://localhost:49501/JBTCDataFeedWebUtilityService.svc/DoWork?RequestType=1&RequestData=%7B%22requestData%22%3A%7B%22uid%22%3A%2220161206175606%22%2C%22site%22%3A%22EWR%22+%2C%22user%22%3Anull%2C%22data%22%3A%7B%22emails%22%3A%22tester%40jbt.co+m%3Bsupervisor%40jbt.com%22%2C%22schedule%22%3A%2260%22%2C%22WhereClause%22%3A%22TermC.Zone1.GateC90.GPU.GPUSTATUSBOOLEAN+%3D+1+AND+TermC.Zon+e1.GateC90.GPU.ON+2+%3D+1+AND+TermC.Zone1.GateC90.GPU.ON+2+%3D+1+AND+Ter+mC.Zone1.GateC90.GPU.MODE+%3D+%27Standby%27+AND+%28+TermC.Zone1.GateC90.+GPU.MODE+%3D+%27Standby%27+OR+TermC.Zone1.GateC90.GPU.MODE+%3D+%27AC++Run%27%29%22%7D%7D%7D
              */
             NameValueCollection queryStringCol =
                 WebOperationContext.Current.IncomingRequest.UriTemplateMatch.QueryParameters;
@@ -84,17 +94,15 @@ namespace JBTCDataFeedWebUtility
                 {
                     if (pars.ContainsKey("RequestData"))
                     {
-                        switch (pars["RequestType"])
+                        int reqType = 0;
+                        if (int.TryParse(pars["RequestType"], out reqType))
                         {
-                            case "1"://TODO: need enum for request types
-                                r = DoBusiness(pars["RequestType"], pars["RequestData"]);
-                                break;
-                            default:
-                                break;
+                            r = DoBusiness(reqType, pars["RequestData"]);
                         }
-                        string responsedata = "aha";
-                        r.ResponseKey = (int)WebUtilityReponseCode.OK;
-                        r.JSON = responsedata;
+                        else
+                        {
+                            r.ResponseKey = (int)WebUtilityReponseCode.InvalidRequestType;
+                        }
                     }
                     else
                     {
@@ -122,11 +130,24 @@ namespace JBTCDataFeedWebUtility
         /// <param name="v">The v.</param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        private ResponseData DoBusiness(string requesttype, string requestData)
+        private ResponseData DoBusiness(int requesttype, string requestData)
         {
             ResponseData r = new ResponseData();
-            r.JSON = @"{test:'OK'}";
-            r.ResponseKey = (int)WebUtilityReponseCode.OK;
+            switch (requesttype)
+            {
+                case (int)ReqyestTypeCode.SiteSpecificDeviceData:
+                    //request
+                    SiteSpecificDeviceDataJsonRequestData ssddjrd =
+                        JsonConvert.DeserializeObject<SiteSpecificDeviceDataJsonRequestData>(requestData);
+
+                    //response
+                    r.JSON = @"{whereclause:'" + ssddjrd.requestData.data.WhereClause + "'}";
+                    r.ResponseKey = (int)WebUtilityReponseCode.OK;
+                    break;
+                default:
+                    r.ResponseKey = (int)WebUtilityReponseCode.InvalidRequestType;
+                    break;
+            }
             return r;
         }
 

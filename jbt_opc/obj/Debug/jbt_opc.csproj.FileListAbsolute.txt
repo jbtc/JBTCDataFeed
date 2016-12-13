@@ -43,3 +43,8 @@ S:\jbt\JBTCFeed\JBTCDataFeed\Output_Debug\jbt_opc.pdb
 S:\jbt\JBTCFeed\JBTCDataFeed\jbt_opc\obj\Debug\jbt_opc.csprojResolveAssemblyReference.cache
 S:\jbt\JBTCFeed\JBTCDataFeed\jbt_opc\obj\Debug\jbt_opc.dll
 S:\jbt\JBTCFeed\JBTCDataFeed\jbt_opc\obj\Debug\jbt_opc.pdb
+C:\jbt\Git\JBTCDataFeed\Output_Debug\jbt_opc.dll
+C:\jbt\Git\JBTCDataFeed\Output_Debug\jbt_opc.pdb
+C:\jbt\Git\JBTCDataFeed\jbt_opc\obj\Debug\jbt_opc.csprojResolveAssemblyReference.cache
+C:\jbt\Git\JBTCDataFeed\jbt_opc\obj\Debug\jbt_opc.dll
+C:\jbt\Git\JBTCDataFeed\jbt_opc\obj\Debug\jbt_opc.pdb
