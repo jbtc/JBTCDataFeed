@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jbt_opc", "jbt_opc\jbt_opc.csproj", "{60122739-3028-405B-A3DC-70FBEF5E1C8C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "Utilities\Utilities.csproj", "{9FDD8B87-AEBD-411C-8715-601430DE4B63}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A9AE40FF-1A21-414A-9FE7-3BE13644CC6D} = {A9AE40FF-1A21-414A-9FE7-3BE13644CC6D}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JBTData", "JBTData\JBTData.csproj", "{3DCEAF3B-779B-4D2F-B8D1-7FB8D59A52F2}"
 EndProject

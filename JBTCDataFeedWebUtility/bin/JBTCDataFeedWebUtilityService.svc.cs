@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -10,6 +11,8 @@ using System.ServiceModel.Channels;
 using System.ServiceModel.Web;
 using System.Text;
 using System.Web.Script.Serialization;
+using Utilities;
+using static Utilities.Logging;
 
 namespace JBTCDataFeedWebUtility
 {
@@ -139,7 +142,42 @@ namespace JBTCDataFeedWebUtility
                     //request
                     SiteSpecificDeviceDataJsonRequestData ssddjrd =
                         JsonConvert.DeserializeObject<SiteSpecificDeviceDataJsonRequestData>(requestData);
+                    // invoke db object to run query based on 
+                    // the selector submitted by the client 
+                    // "WhereClause":
+                    // "TermC.Zone1.GateC90.GPU.GPUSTATUSBOOLEAN = 1 AND 
+                    //  TermC.Zone1.GateC90.GPU.ON2   = 1         AND 
+                    //  TermC.Zone1.GateC90.GPU.ON2   = 1         AND 
+                    //  TermC.Zone1.GateC90.GPU.MODE  = 'Standby' AND 
+                    // ( TermC.Zone1.GateC90.GPU.MODE = 'Standby' OR TermC.Zone1.GateC90.GPU.MODE = 'AC Run' ) "
+                    // we pull data from dict
+                    // time is limited to cyclical bracket implicitly
+                    List<string> verbs = new List<string>() { "AND", "OR" };
+                    // we evaluate each statement to true or false
+                    // 1. get boundaries of logical statements
+                    //  what connects a logical statement is the "="
+                    //  we avaluate from let to right until we hit  (
+                    //  if we hit a "(" we open another stack level
+                    //  -> we count opening and closing brackets if the number is not equal we fail call
+                    string boperator = "AND";
+                    bool res = false;
 
+                    string key = "a";
+                    string value = "d";
+                    res = evaluateEquality(key, value);
+                    string szres = (res == true ? "1" : "0");
+
+                    switch (boperator)
+                    {
+                        case "AND":
+                            break;
+                        case "OR":
+                            break;
+                        default:
+                            break;
+                    }
+                    string w = ssddjrd.requestData.data.WhereClause;
+                    
                     //response
                     r.JSON = @"{whereclause:'" + ssddjrd.requestData.data.WhereClause + "'}";
                     r.ResponseKey = (int)WebUtilityReponseCode.OK;
@@ -149,6 +187,11 @@ namespace JBTCDataFeedWebUtility
                     break;
             }
             return r;
+        }
+
+        private static bool evaluateEquality(string key, string value)
+        {
+            return (key == value ? true : false);
         }
 
 
@@ -224,6 +267,8 @@ namespace JBTCDataFeedWebUtility
 
             }
         }
+
+        
     }
 }
 

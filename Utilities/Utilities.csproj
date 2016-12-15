@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ciloci.Flee, Version=0.9.26.0, Culture=neutral, PublicKeyToken=c8526a021ef298ed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Output_Debug\Ciloci.Flee.dll</HintPath>
+    </Reference>
     <Reference Include="RestSharp, Version=105.0.1.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -49,6 +53,7 @@
     <Compile Include="Email.cs" />
     <Compile Include="EventHandling.cs" />
     <Compile Include="EventLogLogging.cs" />
+    <Compile Include="ExpressionEvaluator.cs" />
     <Compile Include="FilesAndFolders.cs" />
     <Compile Include="JBTClassAttributes.cs" />
     <Compile Include="ListsAndCollections.cs" />

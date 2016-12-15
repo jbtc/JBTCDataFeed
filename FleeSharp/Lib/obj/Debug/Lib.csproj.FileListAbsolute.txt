@@ -1,0 +1,9 @@
+C:\jbt\Git\JBTCDataFeed\FleeSharp\Lib\bin\Debug\Ciloci.Flee.dll
+C:\jbt\Git\JBTCDataFeed\FleeSharp\Lib\bin\Debug\Ciloci.Flee.pdb
+C:\jbt\Git\JBTCDataFeed\FleeSharp\Lib\bin\Debug\Ciloci.Flee.xml
+C:\jbt\Git\JBTCDataFeed\FleeSharp\Lib\obj\Debug\Ciloci.Flee.CompileErrors.resources
+C:\jbt\Git\JBTCDataFeed\FleeSharp\Lib\obj\Debug\Ciloci.Flee.ElementNames.resources
+C:\jbt\Git\JBTCDataFeed\FleeSharp\Lib\obj\Debug\Ciloci.Flee.GeneralErrors.resources
+C:\jbt\Git\JBTCDataFeed\FleeSharp\Lib\obj\Debug\Lib.csproj.GenerateResource.Cache
+C:\jbt\Git\JBTCDataFeed\FleeSharp\Lib\obj\Debug\Ciloci.Flee.dll
+C:\jbt\Git\JBTCDataFeed\FleeSharp\Lib\obj\Debug\Ciloci.Flee.pdb

@@ -40,8 +40,8 @@ S:\jbt\JBTCFeed\JBTCDataFeed\Output_Debug\Utilities.pdb
 S:\jbt\JBTCFeed\JBTCDataFeed\Utilities\obj\Debug\Utilities.csprojResolveAssemblyReference.cache
 S:\jbt\JBTCFeed\JBTCDataFeed\Utilities\obj\Debug\Utilities.dll
 S:\jbt\JBTCFeed\JBTCDataFeed\Utilities\obj\Debug\Utilities.pdb
+C:\jbt\Git\JBTCDataFeed\Utilities\obj\Debug\Utilities.csprojResolveAssemblyReference.cache
 C:\jbt\Git\JBTCDataFeed\Output_Debug\Utilities.dll
 C:\jbt\Git\JBTCDataFeed\Output_Debug\Utilities.pdb
-C:\jbt\Git\JBTCDataFeed\Utilities\obj\Debug\Utilities.csprojResolveAssemblyReference.cache
 C:\jbt\Git\JBTCDataFeed\Utilities\obj\Debug\Utilities.dll
 C:\jbt\Git\JBTCDataFeed\Utilities\obj\Debug\Utilities.pdb

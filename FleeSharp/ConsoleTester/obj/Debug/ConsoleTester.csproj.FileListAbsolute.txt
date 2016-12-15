@@ -1,0 +1,9 @@
+C:\jbt\Git\JBTCDataFeed\FleeSharp\ConsoleTester\bin\Debug\ConsoleTester.exe.config
+C:\jbt\Git\JBTCDataFeed\FleeSharp\ConsoleTester\bin\Debug\ConsoleTester.exe
+C:\jbt\Git\JBTCDataFeed\FleeSharp\ConsoleTester\bin\Debug\ConsoleTester.pdb
+C:\jbt\Git\JBTCDataFeed\FleeSharp\ConsoleTester\bin\Debug\Ciloci.Flee.dll
+C:\jbt\Git\JBTCDataFeed\FleeSharp\ConsoleTester\bin\Debug\Ciloci.Flee.pdb
+C:\jbt\Git\JBTCDataFeed\FleeSharp\ConsoleTester\bin\Debug\Ciloci.Flee.xml
+C:\jbt\Git\JBTCDataFeed\FleeSharp\ConsoleTester\obj\Debug\ConsoleTester.csprojResolveAssemblyReference.cache
+C:\jbt\Git\JBTCDataFeed\FleeSharp\ConsoleTester\obj\Debug\ConsoleTester.exe
+C:\jbt\Git\JBTCDataFeed\FleeSharp\ConsoleTester\obj\Debug\ConsoleTester.pdb
