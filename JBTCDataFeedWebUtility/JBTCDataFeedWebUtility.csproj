@@ -89,6 +89,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InsertTagGroupsJsonRequestData.cs" />
+    <Compile Include="InsertTagsFeedJsonRequestData.cs" />
+    <Compile Include="InsertTagSubscribersJsonRequestData.cs" />
     <Compile Include="JBTCDataFeedWebUtilityService.svc.cs">
       <DependentUpon>JBTCDataFeedWebUtilityService.svc</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
