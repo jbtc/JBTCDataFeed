@@ -228,10 +228,11 @@ namespace JBTCDataFeedWebUtility
                     InsertTagsFeedJsonRequestData itfjrd =
                         JsonConvert.DeserializeObject<InsertTagsFeedJsonRequestData>(requestData);
                     {
-                        string execQuery = "insert into TagsFeed(OWNER,SITE,TAGGROUP,ACTION) values('" +
+                        string execQuery = "insert into TagsFeed(OWNER,SITE,TAGGROUP,TAG, ACTION) values('" +
                             itfjrd.requestData.owner + "','" +
                             itfjrd.requestData.site + "','" +
                             itfjrd.requestData.taggroup + "','" +
+                            itfjrd.requestData.tag + "','" +
                             itfjrd.requestData.action+ "')";
                         string result = RunQuery(execQuery);
                         writeEventLog("Insert of new TagsFeed record done for " + itfjrd.requestData.owner + " with result: " + (result == "NONE" ? "OK" : result), "DoBusiness", null, Utilities.Logging.LogLevel.Info);
