@@ -49,10 +49,12 @@ namespace JBTCDataFeedWebUtility
 
         private enum ReqyestTypeCode : int
         {
+
             SiteSpecificDeviceData = 1,
             InsertTagSubscribers = 2,
             InsertTagGroups = 3,
             InsertTagsFeed=4,
+            GetFeedData = 10,
             Test = 9999
         }
 
@@ -154,6 +156,24 @@ namespace JBTCDataFeedWebUtility
             ResponseData r = new ResponseData();
             switch (requesttype)
             {
+                case (int)ReqyestTypeCode.GetFeedData:
+                    GetFeedDataRequestData gjfrd =
+                        JsonConvert.DeserializeObject<GetFeedDataRequestData>(requestData);
+                    { 
+                    string owner = gjfrd.requestData.owner;
+                    string site = gjfrd.requestData.site;
+                    string taggroup = gjfrd.requestData.taggroup;
+                    
+                    //    string execQuery = "insert into TagGroups(OWNER,SITE,TAGGROUP,ENABLED) values('" +
+                    //        itgjrd.requestData.owner + "','" +
+                    //        itgjrd.requestData.site + "','" +
+                    //        itgjrd.requestData.taggroup + "','" +
+                    //        itgjrd.requestData.enabled + "')";
+                    //    string result = RunQuery(execQuery);
+                    //    writeEventLog("Insert of new TagGroups record done for " + itgjrd.requestData.owner + " with result: " + (result == "NONE" ? "OK" : result), "DoBusiness", null, Utilities.Logging.LogLevel.Info);
+                    }
+                    r.ResponseKey = (int)WebUtilityReponseCode.OK;
+                    break;
                 case (int)ReqyestTypeCode.SiteSpecificDeviceData:
                     #region test
                     //request

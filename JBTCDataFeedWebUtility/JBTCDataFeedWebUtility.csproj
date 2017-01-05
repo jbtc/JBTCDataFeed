@@ -89,6 +89,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GetFeedDataRequestData.cs" />
     <Compile Include="InsertTagGroupsJsonRequestData.cs" />
     <Compile Include="InsertTagsFeedJsonRequestData.cs" />
     <Compile Include="InsertTagSubscribersJsonRequestData.cs" />
