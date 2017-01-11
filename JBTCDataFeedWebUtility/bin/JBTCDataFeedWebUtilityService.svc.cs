@@ -52,9 +52,18 @@ namespace JBTCDataFeedWebUtility
 
             SiteSpecificDeviceData = 1,
             InsertTagSubscribers = 2,
-            InsertTagGroups = 3,
-            InsertTagsFeed=4,
-            GetFeedData = 10,
+            ReadTagSubscribers = 3,
+            UpdateTagSubscribers = 4,
+            DeleteTagSubscribers = 5,
+            InsertTagGroups = 6,
+            ReadTagGroups = 7,
+            UpdateTagGroups = 8,
+            DeleteTagGroups = 9,
+            InsertTagsFeed =10,
+            ReadTagsFeed = 11,
+            UpdateTagsFeed = 12,
+            DeleteTagsFeed = 13,
+            GetFeedData = 100,
             Test = 9999
         }
 
@@ -163,7 +172,7 @@ namespace JBTCDataFeedWebUtility
                     string owner = gjfrd.requestData.owner;
                     string site = gjfrd.requestData.site;
                     string taggroup = gjfrd.requestData.taggroup;
-                    
+                    // request all data for owner and site
                     //    string execQuery = "insert into TagGroups(OWNER,SITE,TAGGROUP,ENABLED) values('" +
                     //        itgjrd.requestData.owner + "','" +
                     //        itgjrd.requestData.site + "','" +
@@ -226,6 +235,68 @@ namespace JBTCDataFeedWebUtility
                     //r.JSON = @"{whereclause:'" + ssddjrd.requestData.data.WhereClause + "'}";
                     r.ResponseKey = (int)WebUtilityReponseCode.OK;
                     break;
+                case (int)ReqyestTypeCode.ReadTagSubscribers:
+                    //request
+                    InsertTagSubscribersJsonRequestData rtsjrd =
+                        JsonConvert.DeserializeObject<InsertTagSubscribersJsonRequestData>(requestData);
+                    {
+                        // read for owner
+                        string owner = rtsjrd.requestData.owner;
+
+                        string execQuery = "SELECT RID,OWNER,EMAIL,PHONE,SMSEMAIL FROM TagSubscribers WHERE OWNER = '" + owner + "'";
+                        string result = RunQuery(execQuery);
+                        writeEventLog("read done for " + owner + " with result: " + result, "DoBusiness", null, Utilities.Logging.LogLevel.Info);
+                        r.JSON = result;
+                        
+                    }
+                    //response
+                    //r.JSON = @"{whereclause:'" + ssddjrd.requestData.data.WhereClause + "'}";
+                    r.ResponseKey = (int)WebUtilityReponseCode.OK;
+                    break;
+                case (int)ReqyestTypeCode.UpdateTagSubscribers:
+                    //request
+                    InsertTagSubscribersJsonRequestData utsjrd =
+                        JsonConvert.DeserializeObject<InsertTagSubscribersJsonRequestData>(requestData);
+                    {
+                        // new row insert
+                        string rid = utsjrd.requestData.rid;
+                        string owner = utsjrd.requestData.owner;
+                        string phone = utsjrd.requestData.phone;
+                        string email = utsjrd.requestData.email;
+                        string smsemail = utsjrd.requestData.smsemail;
+                        string execQuery = "UPDATE TagSubscribers set OWNER = '"+owner+
+                            "',EMAIL = '"+email+
+                            "',PHONE = '"+phone+
+                            "',SMSEMAIL = '"+smsemail+"' WHERE RID = "+rid+" ";
+                        
+                        string result = RunQuery(execQuery);
+                        writeEventLog("update of new TagSubscribers record done for rid=" + rid + " with result: " + (result == "NONE" ? "OK" : result), "DoBusiness", null, Utilities.Logging.LogLevel.Info);
+
+                    }
+                    //response
+                    //r.JSON = @"{whereclause:'" + ssddjrd.requestData.data.WhereClause + "'}";
+                    r.ResponseKey = (int)WebUtilityReponseCode.OK;
+                    break;
+                case (int)ReqyestTypeCode.DeleteTagSubscribers:
+                    //request
+                    InsertTagSubscribersJsonRequestData dtsjrd =
+                        JsonConvert.DeserializeObject<InsertTagSubscribersJsonRequestData>(requestData);
+                    {
+                        // delete
+                        string rid = dtsjrd.requestData.rid;
+                        string owner = dtsjrd.requestData.owner;
+                        string phone = dtsjrd.requestData.phone;
+                        string email = dtsjrd.requestData.email;
+                        string smsemail = dtsjrd.requestData.smsemail;
+                        string execQuery = "DELETE FROM TagSubscribers WHERE RID ="+rid;
+                        string result = RunQuery(execQuery);
+                        writeEventLog("Delete TagSubscribers record done for rid=" + rid + " with result: " + (result == "NONE" ? "OK" : result), "DoBusiness", null, Utilities.Logging.LogLevel.Info);
+
+                    }
+                    //response
+                    //r.JSON = @"{whereclause:'" + ssddjrd.requestData.data.WhereClause + "'}";
+                    r.ResponseKey = (int)WebUtilityReponseCode.OK;
+                    break;
                 case (int)ReqyestTypeCode.InsertTagGroups:
                     //request
                     InsertTagGroupsJsonRequestData itgjrd =
@@ -238,6 +309,54 @@ namespace JBTCDataFeedWebUtility
                             itgjrd.requestData.enabled + "')";
                         string result = RunQuery(execQuery);
                         writeEventLog("Insert of new TagGroups record done for " + itgjrd.requestData.owner + " with result: " + (result == "NONE" ? "OK" : result), "DoBusiness", null, Utilities.Logging.LogLevel.Info);
+                    }
+                    //response
+                    //r.JSON = @"{whereclause:'" + ssddjrd.requestData.data.WhereClause + "'}";
+                    r.ResponseKey = (int)WebUtilityReponseCode.OK;
+                    break;
+                case (int)ReqyestTypeCode.ReadTagGroups:
+                    //request
+                    InsertTagGroupsJsonRequestData rtgjrd =
+                        JsonConvert.DeserializeObject<InsertTagGroupsJsonRequestData>(requestData);
+                    {
+                        string owner = rtgjrd.requestData.owner;
+                        string execQuery = "SELECT RID,OWNER,SITE,TAGGROUP,ENABLED FROM TagGroups WHERE OWNER = '"+owner+"'";
+                        
+                        string result = RunQuery(execQuery);
+                        r.JSON = result;
+                        writeEventLog("Read done for " + owner , "DoBusiness", null, Utilities.Logging.LogLevel.Info);
+                    }
+                    //response
+                    //r.JSON = @"{whereclause:'" + ssddjrd.requestData.data.WhereClause + "'}";
+                    r.ResponseKey = (int)WebUtilityReponseCode.OK;
+                    break;
+                case (int)ReqyestTypeCode.UpdateTagGroups:
+                    //request
+                    InsertTagGroupsJsonRequestData utgjrd =
+                        JsonConvert.DeserializeObject<InsertTagGroupsJsonRequestData>(requestData);
+                    {
+                        string rid = utgjrd.requestData.rid;
+                        string execQuery = "UPDATE TagGroups SET OWNER = '"+ utgjrd.requestData.owner +
+                            "',SITE = '" + utgjrd.requestData.site +
+                            "',TAGGROUP = '"+utgjrd.requestData.taggroup+
+                            "',ENABLED = '"+ utgjrd.requestData.enabled +
+                            "' where RID = " + rid;
+                        
+                        string result = RunQuery(execQuery);
+                        writeEventLog("Update TagGroups record done for rid=" +rid, "DoBusiness", null, Utilities.Logging.LogLevel.Info);
+                    }
+                    //response
+                    //r.JSON = @"{whereclause:'" + ssddjrd.requestData.data.WhereClause + "'}";
+                    r.ResponseKey = (int)WebUtilityReponseCode.OK;
+                    break;
+                case (int)ReqyestTypeCode.DeleteTagGroups:
+                    //request
+                    InsertTagGroupsJsonRequestData dtgjrd =
+                        JsonConvert.DeserializeObject<InsertTagGroupsJsonRequestData>(requestData);
+                    {
+                        string execQuery = "DELETE FROM TagGroups WHERE RID=" + dtgjrd.requestData.rid;
+                        string result = RunQuery(execQuery);
+                        writeEventLog("delete  TagGroups record done for " + dtgjrd.requestData.rid + " with result: " + (result == "NONE" ? "OK" : result), "DoBusiness", null, Utilities.Logging.LogLevel.Info);
                     }
                     //response
                     //r.JSON = @"{whereclause:'" + ssddjrd.requestData.data.WhereClause + "'}";
@@ -256,6 +375,54 @@ namespace JBTCDataFeedWebUtility
                             itfjrd.requestData.action+ "')";
                         string result = RunQuery(execQuery);
                         writeEventLog("Insert of new TagsFeed record done for " + itfjrd.requestData.owner + " with result: " + (result == "NONE" ? "OK" : result), "DoBusiness", null, Utilities.Logging.LogLevel.Info);
+                    }
+                    //response
+                    //r.JSON = @"{whereclause:'" + ssddjrd.requestData.data.WhereClause + "'}";
+                    r.ResponseKey = (int)WebUtilityReponseCode.OK;
+                    break;
+                case (int)ReqyestTypeCode.ReadTagsFeed:
+                    //request
+                    InsertTagsFeedJsonRequestData rtfjrd =
+                        JsonConvert.DeserializeObject<InsertTagsFeedJsonRequestData>(requestData);
+                    {
+                        string owner = rtfjrd.requestData.owner;
+                        string execQuery = "SELECT RID,OWNER,SITE,TAGGROUP,TAG, ACTION FROM TagsFeed WHERE OWNER = '" +owner +"'";
+                        string result = RunQuery(execQuery);
+                        r.JSON = result;
+                        writeEventLog("Read for TagsFeed done for " + rtfjrd.requestData.owner , "DoBusiness", null, Utilities.Logging.LogLevel.Info);
+                    }
+                    //response
+                    //r.JSON = @"{whereclause:'" + ssddjrd.requestData.data.WhereClause + "'}";
+                    r.ResponseKey = (int)WebUtilityReponseCode.OK;
+                    break;
+                case (int)ReqyestTypeCode.UpdateTagsFeed:
+                    //request
+                    InsertTagsFeedJsonRequestData utfjrd =
+                        JsonConvert.DeserializeObject<InsertTagsFeedJsonRequestData>(requestData);
+                    {
+                        string rid = utfjrd.requestData.rid;
+                        string execQuery = "UPDATE TagsFeed OWNER = '"+ utfjrd.requestData.owner +
+                            "',SITE = '"+ utfjrd.requestData.site +
+                            "',TAGGROUP = '"+ utfjrd.requestData.taggroup +
+                            "',TAG = '"+ utfjrd.requestData.tag+
+                            "', ACTION = '"+ utfjrd.requestData.action +"'" +
+                            " WHERE RID = " + rid;
+                        string result = RunQuery(execQuery);
+                        writeEventLog("Update TagsFeed record done for " + rid + " with result: " + (result == "NONE" ? "OK" : result), "DoBusiness", null, Utilities.Logging.LogLevel.Info);
+                    }
+                    //response
+                    //r.JSON = @"{whereclause:'" + ssddjrd.requestData.data.WhereClause + "'}";
+                    r.ResponseKey = (int)WebUtilityReponseCode.OK;
+                    break;
+                case (int)ReqyestTypeCode.DeleteTagsFeed:
+                    //request
+                    InsertTagsFeedJsonRequestData dtfjrd =
+                        JsonConvert.DeserializeObject<InsertTagsFeedJsonRequestData>(requestData);
+                    {
+                        string rid = dtfjrd.requestData.rid;
+                        string execQuery = "DELETE FROM TagsFeed WHERE RID = " + rid;                        
+                        string result = RunQuery(execQuery);
+                        writeEventLog("Delete of TagsFeed record done for rid=" + rid + " with result: " + (result == "NONE" ? "OK" : result), "DoBusiness", null, Utilities.Logging.LogLevel.Info);
                     }
                     //response
                     //r.JSON = @"{whereclause:'" + ssddjrd.requestData.data.WhereClause + "'}";

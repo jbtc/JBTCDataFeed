@@ -43,5 +43,7 @@ namespace JBTCDataFeedWebUtility
         public string tag;
         [JsonProperty("action")]
         public string action;
+        [JsonProperty("rid")]
+        public string rid;
     }
 }

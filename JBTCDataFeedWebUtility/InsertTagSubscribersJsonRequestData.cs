@@ -40,5 +40,7 @@ namespace JBTCDataFeedWebUtility
         public string phone;
         [JsonProperty("smsemail")]
         public string smsemail;
+        [JsonProperty("rid")]
+        public string rid;
     }
 }

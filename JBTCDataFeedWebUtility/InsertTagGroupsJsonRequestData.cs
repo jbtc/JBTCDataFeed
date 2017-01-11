@@ -39,6 +39,8 @@ namespace JBTCDataFeedWebUtility
         [JsonProperty("taggroup")]
         public string taggroup;
         [JsonProperty("enabled")]
-        public string enabled;        
+        public string enabled;
+        [JsonProperty("rid")]
+        public string rid;
     }
 }
